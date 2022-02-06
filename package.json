@@ -1,0 +1,43 @@
+{
+  "name": "learn-vocabulary",
+  "version": "1.0.0",
+  "description": "Project made in react-js created to make your vocabulary learning in different languages easier and more fun.",
+  "main": "src/index.js",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "standard": "^16.0.4",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "scripts": {
+    "start": "webpack serve  --open",
+    "build": "webpack --mode production",
+    "lint": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-felipe:edex-13/learn-vocabulary.git"
+  },
+  "keywords": [
+    "node",
+    "react"
+  ],
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  },
+  "author": "Ederson Felipe Lopez Bolivar <ederson12f@gmail.com>",
+  "license": "MIT"
+}
