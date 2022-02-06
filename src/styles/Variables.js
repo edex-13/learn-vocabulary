@@ -1,0 +1,5 @@
+export const BLACK = 'rgb(36, 40, 47);'
+export const GREEN = '#00ff97'
+export const YELLOW = '#ffc36c'
+export const GRAY = '#dfdfdf'
+export const WHITE = '#f5f5f5'
