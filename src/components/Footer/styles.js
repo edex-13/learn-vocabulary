@@ -25,7 +25,7 @@ export const Icon = styled.a`
   transition: color 0.5s ease 0s;
   color: rgb(158, 158, 158);
   &:hover {
-    color: ${variables.YELLOW};
+    color: ${variables.PINK};
   }
 `
 export const SectionBy = styled.section`
@@ -42,9 +42,9 @@ export const By = styled.a`
   transition: color 0.2s ease 0s;
   transition: border 0.2s ease 0s;
   color: rgb(245, 245, 245);
-  border-bottom: 1px solid rgb(255, 152, 0);
+  border-bottom: 1px solid ${variables.PINK};
   &:hover {
-    color: ${variables.YELLOW};
+    color: ${variables.PINK};
     border-bottom: 1px solid rgba(255, 152, 0, 0);
   }
 `

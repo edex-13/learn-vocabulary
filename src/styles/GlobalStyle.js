@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
   ::selection {
-    color: #ffc36c;
+    color:#ff4b2b;
     background: rgb(32, 35, 41);
 }
 `
