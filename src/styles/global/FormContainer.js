@@ -7,6 +7,7 @@ export const FormContainerStyle = () =>
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+    gap: 20px;
     max-width: 425px;
     width: 100%;
     min-height: 570px;
