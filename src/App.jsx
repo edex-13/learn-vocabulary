@@ -1,6 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import { AppContext } from '@context/AppContext'
+
+import { ProtectedRoute } from '@components/ProtectedRoute'
 import { Home } from './pages/Home/index.jsx'
 import { Login } from './pages/Login/index.jsx'
 import { Register } from './pages/Register/index.jsx'
@@ -12,15 +15,23 @@ import { GlobalStyle } from '@styles/GlobalStyle'
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/Register' element={<Register />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <AppContext>
+      <BrowserRouter>
+        <GlobalStyle />
+        <Header />
+        <Routes>
+          <Route
+            path='/' element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route path='/login' element={<Login />} />
+          <Route path='/Register' element={<Register />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AppContext>
   )
 }
