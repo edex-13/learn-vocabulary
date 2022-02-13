@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
+  sendPasswordResetEmail,
   signInWithPopup
 } from 'firebase/auth'
 
@@ -33,6 +34,16 @@ export const useAuth = (setLoading) => {
     const googleProvider = new GoogleAuthProvider()
     return signInWithPopup(auth, googleProvider)
   }
+  const PasswordReset = async (email) => {
+    try {
+      setLoading(true)
+      await sendPasswordResetEmail(auth, email)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      console.error(error)
+    }
+  }
   const ChangeAuth = () =>
     useEffect(() => {
       const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -48,6 +59,7 @@ export const useAuth = (setLoading) => {
     Register,
     Login,
     LoginWithGoogle,
+    PasswordReset,
     ChangeAuth
   }
 }

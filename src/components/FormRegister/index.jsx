@@ -1,11 +1,15 @@
+import Swal from 'sweetalert2'
 import React, { useState } from 'react'
+
 import { Link } from 'react-router-dom'
 import { Button, Input, Text } from './style'
 
 import { useAppContext } from '@hooks/useAppContext'
 
 export const FormRegister = () => {
-  const { Auth: { Register } } = useAppContext()
+  const {
+    Auth: { Register }
+  } = useAppContext()
 
   const [user, setUser] = useState({
     name: '',
@@ -19,10 +23,14 @@ export const FormRegister = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (user.password !== user.passwordConfirm) {
-      window.alert('Las contraseñas no coinciden')
+      Swal.fire({
+        title: '¡Error!',
+        text: 'Las contraseñas no coinciden.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })
       return
     }
-    console.log(user)
     Register(user)
   }
   return (
