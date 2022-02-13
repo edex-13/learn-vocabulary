@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AppContext } from '@context/AppContext'
 
 import { ProtectedRoute } from '@components/ProtectedRoute'
+import { RedirectRoute } from '@components/RedirectRoute'
 import { Home } from './pages/Home/index.jsx'
 import { Login } from './pages/Login/index.jsx'
 import { Register } from './pages/Register/index.jsx'
@@ -27,8 +28,20 @@ export const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route path='/login' element={<Login />} />
-          <Route path='/Register' element={<Register />} />
+          <Route
+            path='/login' element={
+              <RedirectRoute>
+                <Login />
+              </RedirectRoute>
+            }
+          />
+          <Route
+            path='/Register' element={
+              <RedirectRoute>
+                <Register />
+              </RedirectRoute>
+            }
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
