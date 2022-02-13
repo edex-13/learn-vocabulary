@@ -4,11 +4,13 @@
   "description": "Project made in react-js created to make your vocabulary learning in different languages easier and more fun.",
   "main": "src/index.js",
   "dependencies": {
+    "firebase": "^9.6.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.2.1",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "sweetalert2": "^11.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
@@ -16,6 +18,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
+    "dotenv-webpack": "^7.1.0",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "standard": "^16.0.4",

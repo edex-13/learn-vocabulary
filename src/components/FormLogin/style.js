@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import * as vars from '@styles/Variables'
+
 import { InputStyle, ButtonStyle } from '@styles/global/FormContainer'
 
 export const Text = styled.p`
@@ -8,6 +10,12 @@ export const Text = styled.p`
   letter-spacing: 0.5px;
   margin: 20px;
   text-align: center;
+  ${props => props.click &&
+    `cursor: pointer;
+    &:hover {
+      color: ${vars.PINK};
+    }`
+  };
 `
 export const Input = styled.input`
   ${InputStyle}
