@@ -1,9 +1,29 @@
 import { useState, useEffect } from 'react'
-import { onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  onAuthStateChanged,
+  updateProfile,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup
+} from 'firebase/auth'
+
 import { auth } from '../firebase'
 
 export const useAuth = (setLoading) => {
   const [user, setUser] = useState(null)
+
+  const Register = async ({ email, password, name } = {}) => {
+    try {
+      setLoading(true)
+      await createUserWithEmailAndPassword(auth, email, password)
+      await updateProfile(auth.currentUser, { displayName: name })
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      console.error(error)
+    }
+  }
 
   const Login = (email, password) => {
     console.log('Login')
@@ -25,6 +45,7 @@ export const useAuth = (setLoading) => {
 
   return {
     user,
+    Register,
     Login,
     LoginWithGoogle,
     ChangeAuth
