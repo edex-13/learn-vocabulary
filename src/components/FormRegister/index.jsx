@@ -20,7 +20,7 @@ export const FormRegister = () => {
   const handleChange = ({ target: { value, name } }) => {
     setUser({ ...user, [name]: value })
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (user.password !== user.passwordConfirm) {
       Swal.fire({
@@ -31,7 +31,13 @@ export const FormRegister = () => {
       })
       return
     }
-    Register(user)
+    await Register(user)
+    Swal.fire({
+      title: '¡Registrado!',
+      text: 'Revisa tu correo para confirmar tu cuenta. Y inicia sesión.',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    })
   }
   return (
     <form onSubmit={handleSubmit}>

@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   sendPasswordResetEmail,
+  sendEmailVerification,
   signInWithPopup
 } from 'firebase/auth'
 
@@ -19,15 +20,26 @@ export const useAuth = (setLoading) => {
       setLoading(true)
       await createUserWithEmailAndPassword(auth, email, password)
       await updateProfile(auth.currentUser, { displayName: name })
+      await sendEmailVerification(auth.currentUser)
+      await Logout()
       setLoading(false)
     } catch (error) {
       setLoading(false)
       console.error(error)
     }
   }
-
+  const EmailVerification = async () => {
+    try {
+      setLoading(true)
+      console.log(auth.currentUser)
+      await sendEmailVerification(auth.currentUser)
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      console.error(error)
+    }
+  }
   const Login = (email, password) => {
-    console.log('Login')
     return signInWithEmailAndPassword(auth, email, password)
   }
   const LoginWithGoogle = () => {
@@ -44,22 +56,24 @@ export const useAuth = (setLoading) => {
       console.error(error)
     }
   }
+  const Logout = () => auth.signOut()
+
   const ChangeAuth = () =>
     useEffect(() => {
       const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser)
         setLoading(false)
-        console.log('ChangeAuth')
       })
       return () => unsubuscribe()
     }, [])
-
   return {
     user,
+    EmailVerification,
     Register,
     Login,
     LoginWithGoogle,
     PasswordReset,
-    ChangeAuth
+    ChangeAuth,
+    Logout
   }
 }

@@ -37,9 +37,7 @@ export const App = () => {
           />
           <Route
             path='/Register' element={
-              <RedirectRoute>
-                <Register />
-              </RedirectRoute>
+              <Register />
             }
           />
         </Routes>
